@@ -1,10 +1,9 @@
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Home from './screens/Home';
-import About from './screens/About';
-import ReviewDetails from './screens/ReviewDetails';
 import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeStack from './routes/HomeStack';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -14,19 +13,18 @@ export default function App() {
     'PlaypenSans': require('./assets/fonts/PlaypenSans/PlaypenSans-Medium.ttf'),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if(fontsLoaded) {
+  useEffect(() => {
+    (async function(){
       await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded])
+    })();
+  }, [fontsLoaded]);
   
+  if(fontError) throw new Error('Error with loading fonts');
   if(!fontsLoaded) return null;
 
   return (
-    <View
-      onLayout={onLayoutRootView}
-    >
-      <Home/>
-    </View>
+    <NavigationContainer>
+      <HomeStack/>
+    </NavigationContainer>
   )
 }
