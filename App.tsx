@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { ReactElement, useCallback } from 'react';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import Home from './screens/Home';
+import About from './screens/About';
+import ReviewDetails from './screens/ReviewDetails';
+import { View } from 'react-native';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontsLoaded, fontError] = useFonts({
+    'Agbalumo': require('./assets/fonts/Agbalumo/Agbalumo-Regular.ttf'),
+    'PlaypenSans': require('./assets/fonts/PlaypenSans/PlaypenSans-Medium.ttf'),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const onLayoutRootView = useCallback(async () => {
+    if(fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded])
+  
+  if(!fontsLoaded) return null;
+
+  return (
+    <View
+      onLayout={onLayoutRootView}
+    >
+      <Home/>
+    </View>
+  )
+}
