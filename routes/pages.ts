@@ -4,18 +4,7 @@ import Home from "../screens/Home";
 import About from "../screens/About";
 import ReviewDetails from "../screens/ReviewDetails";
 
-type pageObjectTypes<Keys extends string[]> = {
-  [key in Keys[number]]: {
-    name: Capitalize<string & key>,
-    component: () => ReactElement
-  }
-}
-
-export const pages: pageObjectTypes<[
-  "home",
-  "about",
-  "reviewDetails"
-]> = {
+export const pages = {
   home: { name: "Home", component: Home },
   about: { name: "About", component: About },
   reviewDetails: { name: "ReviewDetails", component: ReviewDetails },
