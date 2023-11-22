@@ -1,25 +1,28 @@
 import { ReactElement } from "react"; 
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { drawerPages, DrawerPagesParamList } from "./pages";
+import { DrawerPagesParamList } from "./drawerPages";
+
+import HomeStack from "./HomeStack";
+import AboutStack from "./AboutStack";
 
 const RootDrawer = createDrawerNavigator<DrawerPagesParamList>();
 
 function DrawerNavigator(): ReactElement {
   return (
     <RootDrawer.Navigator
-      initialRouteName={drawerPages.home.name}
+      initialRouteName="HomeDrawer"
     >
       <RootDrawer.Screen 
-        name={drawerPages.home.name} 
-        component={drawerPages.home.Component}
+        name="HomeDrawer" 
+        component={HomeStack}
         options={{
           title: "Home"
         }}
       />
       <RootDrawer.Screen 
-        name={drawerPages.about.name} 
-        component={drawerPages.about.Component}
+        name="AboutDrawer"
+        component={AboutStack}
         options={{
           title: "About"
         }}
