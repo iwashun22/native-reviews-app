@@ -1,9 +1,9 @@
+import 'react-native-gesture-handler';
 import React, { ReactElement, useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeStack from './routes/HomeStack';
+import DrawerNavigator from './routes/Drawer';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <HomeStack/>
+      <DrawerNavigator/>
     </NavigationContainer>
   )
 }

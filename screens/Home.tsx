@@ -2,18 +2,10 @@ import React, { ReactElement, useCallback, useState } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global';
 
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
-import { PagesName } from '../routes/pages';
+import type { ReviewProps } from './ReviewDetails';
+import type { PageProps } from '../routes/pages';
 
-type Navigator = NavigationProp<ParamListBase>;
-export interface ReviewProps {
-  title: string,
-  rating: number,
-  body: string,
-  key: string
-}
-
-function Home({ navigation }: { navigation: Navigator}): ReactElement {
+function Home({ navigation }: PageProps<"HomePage">): ReactElement {
   const [reviews, setReviews] = useState<Array<ReviewProps>>([
     { title: "Zelda", rating: 5, body: "lorem ipsum", key: '1' },
     { title: "Mario", rating: 4, body: "lorem ipsum", key: '2'},
@@ -28,7 +20,7 @@ function Home({ navigation }: { navigation: Navigator}): ReactElement {
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => {
             // memo: passing data to the navigated page 
-            navigation.navigate<PagesName>("ReviewDetails", item);
+            navigation.navigate("ReviewDetailsPage", item);
           }}>
             <Text style={globalStyles.titleText}>{item.title}</Text>
           </TouchableOpacity>

@@ -3,14 +3,16 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 
 import { globalStyles } from '../styles/global';
 
-import { NavigationProp, ParamListBase, RouteProp } from '@react-navigation/native';
+import type { PageProps } from '../routes/pages';
 
-import { ReviewProps } from "./Home";
+export interface ReviewProps {
+  title: string,
+  rating: number,
+  body: string,
+  key: string
+}
 
-function ReviewDetails({ route, navigation }: {
-  route: RouteProp<{ params: ReviewProps }>,
-  navigation: NavigationProp<ParamListBase> 
-}): ReactElement {
+function ReviewDetails({ route, navigation }: PageProps<"ReviewDetailsPage">): ReactElement {
   const goBack = useCallback(() => {
     navigation.goBack();
   }, []);
