@@ -5,6 +5,7 @@ import { DrawerPagesParamList } from "./drawerPages";
 
 import HomeStack from "./HomeStack";
 import AboutStack from "./AboutStack";
+// import Header from "../shared/Header";
 
 const RootDrawer = createDrawerNavigator<DrawerPagesParamList>();
 
@@ -12,12 +13,15 @@ function DrawerNavigator(): ReactElement {
   return (
     <RootDrawer.Navigator
       initialRouteName="HomeDrawer"
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <RootDrawer.Screen 
         name="HomeDrawer" 
         component={HomeStack}
         options={{
-          title: "Home"
+          title: "Home",
         }}
       />
       <RootDrawer.Screen 
