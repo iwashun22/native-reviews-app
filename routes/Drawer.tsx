@@ -1,11 +1,12 @@
-import { ReactElement } from "react"; 
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { ReactElement } from 'react'; 
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { DrawerPagesParamList } from "./drawerPages";
+import { DrawerPagesParamList } from './drawerPages';
 
-import HomeStack from "./HomeStack";
-import AboutStack from "./AboutStack";
+import HomeStack from './HomeStack';
+import AboutStack from './AboutStack';
 // import Header from "../shared/Header";
+import DrawerContent from '../components/DrawerContent';
 
 const RootDrawer = createDrawerNavigator<DrawerPagesParamList>();
 
@@ -16,6 +17,7 @@ function DrawerNavigator(): ReactElement {
       screenOptions={{
         headerShown: false,
       }}
+      drawerContent={DrawerContent}
     >
       <RootDrawer.Screen 
         name="HomeDrawer" 
