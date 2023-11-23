@@ -16,6 +16,7 @@ function DrawerNavigator(): ReactElement {
       initialRouteName="HomeDrawer"
       screenOptions={{
         headerShown: false,
+        drawerType: "slide"
       }}
       drawerContent={DrawerContent}
     >

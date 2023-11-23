@@ -6,9 +6,9 @@ import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 import { pages } from './pages';
 import type { RootStackParamList } from './pages';
-import type { DrawerPageProps } from './drawerPages';
 
 // import Header from '../shared/Header';
+import MenuBar from '../shared/MenuBar';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -31,13 +31,7 @@ function HomeStack(): ReactElement {
         component={pages.home.Component}
         options={{
           title: "GameZone",
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => {
-              navigation.dispatch(DrawerActions.openDrawer());
-            }}>
-              <MaterialIcons name="menu" size={30} color="#fff"/>
-            </TouchableOpacity>
-          )
+          headerLeft: () => <MenuBar/>
         }}
       />
       <Stack.Screen 

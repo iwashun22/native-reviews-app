@@ -8,6 +8,7 @@ import { pages } from './pages';
 import type { RootStackParamList } from './pages';
 
 // import Header from '../shared/Header';
+import MenuBar from '../shared/MenuBar';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,13 +30,7 @@ function AboutStack(): ReactElement {
         component={pages.about.Component}
         options={{
           title: "About GameZone",
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => {
-              navigation.dispatch(DrawerActions.openDrawer());
-            }}>
-              <MaterialIcons name="menu" size={30} color="#fff"/>
-            </TouchableOpacity>
-          )
+          headerLeft: () => <MenuBar/>
         }}
       />
     </Stack.Navigator>
