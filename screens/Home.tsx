@@ -1,5 +1,6 @@
 import React, { ReactElement, useCallback, useState } from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
+import Card from '../shared/Card';
 import { globalStyles } from '../styles/global';
 
 import type { ReviewProps } from './ReviewDetails';
@@ -22,7 +23,9 @@ function Home({ navigation }: PageProps<"HomePage">): ReactElement {
             // memo: passing data to the navigated page 
             navigation.navigate("ReviewDetailsPage", item);
           }}>
-            <Text style={globalStyles.titleText}>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />

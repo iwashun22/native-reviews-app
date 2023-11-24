@@ -1,5 +1,6 @@
 import React, { ReactElement, useCallback } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import Card from '../shared/Card';
 
 import { globalStyles } from '../styles/global';
 
@@ -19,9 +20,11 @@ function ReviewDetails({ route, navigation }: PageProps<"ReviewDetailsPage">): R
   const { title, body, rating, key } = route.params;
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>{title}</Text>
-      <Text>{body}</Text>
-      <Text>{rating}</Text>
+      <Card>
+        <Text style={globalStyles.titleText}>{title}</Text>
+        <Text>{body}</Text>
+        <Text>{rating}</Text>
+      </Card>
       <Button title='back to home screen' onPress={goBack}/>
     </View>
   )

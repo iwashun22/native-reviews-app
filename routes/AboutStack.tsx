@@ -1,8 +1,5 @@
 import React, { ReactElement } from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { MaterialIcons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 import { pages } from './pages';
 import type { RootStackParamList } from './pages';
@@ -13,7 +10,6 @@ import MenuBar from '../shared/MenuBar';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AboutStack(): ReactElement {
-  const navigation = useNavigation();
   return (
     <Stack.Navigator
       screenOptions={{
