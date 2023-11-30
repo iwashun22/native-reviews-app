@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { pages } from './pages';
 import type { RootStackParamList } from './pages';
 
-// import Header from '../shared/Header';
 import MenuBar from '../shared/MenuBar';
+import HeaderTitle from '../shared/Header';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,6 +20,7 @@ function HomeStack(): ReactElement {
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",
+        headerTitle: HeaderTitle
       }}
     >
       <Stack.Screen 
