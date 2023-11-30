@@ -1,5 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, NativeModules, Platform, Image } from 'react-native';
+import { View, Text, StyleSheet, NativeModules, Platform, Image, ImageBackground } from 'react-native';
+
+import MenuBar from './MenuBar';
+import { getHeaderTitle } from '@react-navigation/elements';
+import type { NativeStackHeaderProps } from '@react-navigation/native-stack';
+
+export function Header({ route, options } : NativeStackHeaderProps) {
+  const title = getHeaderTitle(options, route.name);
+  return (
+    <ImageBackground 
+      source={require("../assets/images/game-bg.png")} 
+      style={styles.header}
+    >
+      <MenuBar/>
+      <HeaderTitle children={title}/>
+    </ImageBackground>
+  )
+}
 
 export default function HeaderTitle({ children, tintColor }: { 
   children: string, 
@@ -28,6 +45,13 @@ function getStatusBarHeight() {
 }
 const h = getStatusBarHeight();
 const styles = StyleSheet.create({
+  header: {
+    height: '100%',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   headerContent: {
     display: "flex",
     flexDirection: "row",

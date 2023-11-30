@@ -6,7 +6,7 @@ import { pages } from './pages';
 import type { RootStackParamList } from './pages';
 
 import MenuBar from '../shared/MenuBar';
-import HeaderTitle from '../shared/Header';
+import HeaderTitle, { Header } from '../shared/Header';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,7 +19,8 @@ function AboutStack(): ReactElement {
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",
-        headerTitle: HeaderTitle
+        headerTitle: HeaderTitle,
+        // header: Header
       }}
     >
       <Stack.Screen 
