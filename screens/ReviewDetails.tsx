@@ -7,6 +7,8 @@ import { globalStyles } from '../styles/global';
 
 import type { PageProps } from '../routes/pages';
 
+// import {  } from '@react-navigation/native';
+
 export interface ReviewProps {
   title: string,
   rating: number,

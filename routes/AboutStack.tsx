@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
-import { ImageBackground, Image, View, StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { pages } from './pages';
 import type { RootStackParamList } from './pages';
 
 import MenuBar from '../shared/MenuBar';
-import HeaderTitle, { Header } from '../shared/Header';
+import HeaderTitle from '../shared/Header';
+// import HeaderBackground from '../shared/HeaderBackground';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,7 +20,8 @@ function AboutStack(): ReactElement {
         headerTintColor: "#fff",
         headerTitleAlign: "center",
         headerTitle: HeaderTitle,
-        // header: Header
+        // headerBackground: HeaderBackground,
+        // headerTransparent: true,
       }}
     >
       <Stack.Screen 

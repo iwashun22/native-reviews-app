@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Image } from 'react-native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { pages } from './pages';
@@ -6,6 +7,7 @@ import type { RootStackParamList } from './pages';
 
 import MenuBar from '../shared/MenuBar';
 import HeaderTitle from '../shared/Header';
+// import HeaderBackground from '../shared/HeaderBackground';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -14,13 +16,15 @@ function HomeStack(): ReactElement {
     <Stack.Navigator 
       initialRouteName={pages.home.name}
       screenOptions={{
-        // headerShown: false
+        headerShown: false,
         headerStyle: {
           backgroundColor: "#0163d2"
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",
-        headerTitle: HeaderTitle
+        headerTitle: HeaderTitle,
+        // headerBackground: HeaderBackground,
+        // headerTransparent: true,
       }}
     >
       <Stack.Screen 
@@ -35,7 +39,8 @@ function HomeStack(): ReactElement {
         name={pages.reviewDetails.name} 
         component={pages.reviewDetails.Component}
         options={{
-          title: "Review Details"
+          title: "Review Details",
+          headerShown: true,
         }}
       />
     </Stack.Navigator>
