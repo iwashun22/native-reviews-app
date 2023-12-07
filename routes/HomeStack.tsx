@@ -16,7 +16,7 @@ function HomeStack(): ReactElement {
     <Stack.Navigator 
       initialRouteName={pages.home.name}
       screenOptions={{
-        headerShown: false,
+        // headerShown: false,
         headerStyle: {
           backgroundColor: "#0163d2"
         },

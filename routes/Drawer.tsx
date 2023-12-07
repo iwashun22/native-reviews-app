@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'; 
+import { ReactElement } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { DrawerPagesParamList } from './drawerPages';
@@ -18,7 +18,7 @@ function DrawerNavigator(): ReactElement {
     <RootDrawer.Navigator
       initialRouteName="HomeDrawer"
       screenOptions={{
-        // headerShown: false, // memo: Toggle this to display drawer header 
+        headerShown: false, // memo: Toggle this to display drawer header 
         drawerType: "slide",
         headerStyle: {
           backgroundColor: '#000',
