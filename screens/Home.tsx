@@ -1,5 +1,5 @@
-import React, { ReactElement, useState } from 'react';
-import { View, Text, Button, FlatList, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import React, { ReactElement, useState, useCallback } from 'react';
+import { View, Text, Button, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Card from '../shared/Card';
 import ReviewForm from '../components/ReviewForm';
@@ -15,23 +15,31 @@ function Home({ navigation }: PageProps<"HomePage">): ReactElement {
     { title: "Mario", rating: 4, body: "lorem ipsum", key: '2'},
     { title: "Kirby", rating: 3, body: "lorem ipsum", key: '3'}
   ])
+  const addReview = useCallback((review: ReviewProps) => {
+    setReviews((currentReviews) => {
+      return [ ...currentReviews, review ]
+    });
+    setShowModal(false);
+  }, []);
   return (
     <View style={globalStyles.container}>
       {/* <Text style={globalStyles.titleText}>Home Screen</Text> */}
       {/* <Button title="go to review dets" onPress={navigateReview}/> */}
       <Modal visible={showModal} animationType="slide">
-        <View style={styles.modalContent}>
-          <MaterialIcons 
-            name="close"
-            size={24}
-            onPress={() => setShowModal(false)}
-            style={[
-              styles.modalToggle,
-              styles.modalClose
-            ]}
-          />
-          <ReviewForm />
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons 
+              name="close"
+              size={24}
+              onPress={() => setShowModal(false)}
+              style={[
+                styles.modalToggle,
+                styles.modalClose
+              ]}
+            />
+            <ReviewForm addReview={addReview}/>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons 
