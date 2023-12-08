@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, TextInput, Text, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
+import CustomButton from './CustomButton';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { globalStyles } from '../styles/global';
@@ -74,6 +75,7 @@ function ReviewForm({ addReview }: {
             <TextInput
               multiline
               style={globalStyles.input}
+              numberOfLines={3}
               placeholder="Review Body"
               onChangeText={
                 formikProps.handleChange<keyof FormReviewProps>("body")
@@ -98,10 +100,9 @@ function ReviewForm({ addReview }: {
             <Text style={globalStyles.errorMessage}>
               { formikProps.touched.rating && formikProps.errors.rating }
             </Text>
-            <Button 
-              title="submit"
+            <CustomButton
+              text="submit"
               onPress={() => formikProps.handleSubmit()}
-              color="maroon"
             />
           </View>
         )}
